@@ -1,4 +1,4 @@
-const editorTemplate = '<button id="addProduct" class="button">Add Speaker</button>';
+const editorTemplate = '<button id="addProduct" class="button">Add Speaker1</button>';
 
 const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
