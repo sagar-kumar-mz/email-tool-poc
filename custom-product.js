@@ -53,7 +53,7 @@ const toolTemplate = function (values, isViewer = false) {
 
 const toolEmailTemplate = function (values, isViewer = false) {
   return `
-    <table cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
+    <table unicnum="1357" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
       <tbody>
         <tr><td width="100%"><img src="${values.speakerImage.url}" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" /></td></tr>
         <tr><td width="100%"><h3 style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${values.speakerTitleColor};">${values.speakerTitle}</h3></td></tr>
