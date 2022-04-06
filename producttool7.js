@@ -43,8 +43,8 @@ const toolTemplate = function (values, isViewer = false) {
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle}</h3>
-      <div class="description">${values.speakerAbout}</div>
-      <h4 style="margin: 12px 0; color: ${values.speakerEmailColor};">${values.speakerEmail}</h4>
+      <div class="description">${values.speakerEmail}, ${values.speakerAbout}</div>
+     //<h4 style="margin: 12px 0; color: ${values.speakerEmailColor};">${values.speakerEmail}, ${values.speakerAbout}</h4>
     </div>
   </div>
   ${isViewer ? modalTemplate({ products: values.data.products }) : ''}`;
@@ -67,14 +67,9 @@ const toolEmailTemplate = function (values, isViewer = false) {
   };">${values.speakerTitle}</h3></td></tr>
         <tr><td width="100%"><div id="${
           values?.speakerLibrary?.selected?.id
-        }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0">${
+        }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0">${values.speakerEmail},${
     values.speakerAbout
-  }</div></td></tr>
-        <tr><td width="100%"><h4 id="${
-          values?.speakerLibrary?.selected?.id
-        }-speakerEmail" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
-    values.speakerEmailColor
-  };">${values.speakerEmail}</h4></td></tr>
+  }, </div></td></tr>
       </tbody>
     </table>
   `;
