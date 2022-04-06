@@ -215,7 +215,7 @@ unlayer.registerTool({
         ? {
             ...values,
             speakerTitle: value.selected.name,
-            speakerEmail: value.selected.email,
+            speakerEmail: value.selected.designation,
             // speakerPrice: value.selected.price,
             speakerAbout: value.selected.about,
             speakerImage: {
