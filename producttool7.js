@@ -2,10 +2,10 @@ const editorTemplate = '<button id="addProduct" class="button">Add Speakersss</b
 
 const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
-  <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-email="<%= item.email %>" data-image="<%= item.profile_img %>" data-description="<%= item.about %>" >
+  <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-description="<%= item.about %>" >
   <img src="<%= item.profile_img %>" style="max-height: 150px;min-height: 100px;width: 100%;" />
     <h4 style="margin: 8px 0; text-align: left;"><%= item.name %></h4>
-    <h4 style="margin: 8px 0; text-align: left;"><%= item.email %></h4>
+    <h4 style="margin: 8px 0; text-align: left;"><%= item.designation %></h4>
     <p style="text-align: left;"><%= item.about %></p>
   </div>
 <% }); %>
