@@ -1,12 +1,11 @@
-const editorTemplate = '<button id="addProduct" class="button">Add Speakersss</button>';
+const editorTemplate = '<button id="addProduct" class="button">Add Speaker</button>';
 
 const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
-  <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-description="<%= item.about %>" >
+  <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
   <img src="<%= item.profile_img %>" style="max-height: 150px;min-height: 100px;width: 100%;" />
     <h4 style="margin: 8px 0; text-align: left;"><%= item.name %></h4>
-    <h4 style="margin: 8px 0; text-align: left;"><%= item.designation %></h4>
-    <p style="text-align: left;"><%= item.about %></p>
+    <h5 style="margin: 8px 0; text-align: left;"><%= item.designation %>,<%= item.company %> </h5>
   </div>
 <% }); %>
 `);
@@ -216,8 +215,7 @@ unlayer.registerTool({
             ...values,
             speakerTitle: value.selected.name,
             speakerEmail: value.selected.designation,
-            // speakerPrice: value.selected.price,
-            speakerAbout: value.selected.about,
+            speakerAbout: value.selected.company,
             speakerImage: {
               url: value.selected.profile_img,
             },
