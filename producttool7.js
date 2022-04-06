@@ -172,7 +172,7 @@ unlayer.registerTool({
         },
         speakerTitle: {
           label: 'Speaker Title',
-          defaultValue: 'Speaker Title',
+          defaultValue: 'Speaker Name',
           widget: 'text',
         },
         speakerTitleColor: {
@@ -183,12 +183,12 @@ unlayer.registerTool({
         speakerAbout: {
           label: 'Speaker Description',
           defaultValue:
-            'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
+            'Company Name',
           widget: 'rich_text',
         },
         speakerEmail: {
           label: 'Speaker Email',
-          defaultValue: 'speaker@mail.com',
+          defaultValue: 'Designation',
           widget: 'text',
         },
         speakerEmailColor: {
