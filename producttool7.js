@@ -44,7 +44,6 @@ const toolTemplate = function (values, isViewer = false) {
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle}</h3>
       <div class="description">${values.speakerEmail}, ${values.speakerAbout}</div>
-     //<h4 style="margin: 12px 0; color: ${values.speakerEmailColor};">${values.speakerEmail}, ${values.speakerAbout}</h4>
     </div>
   </div>
   ${isViewer ? modalTemplate({ products: values.data.products }) : ''}`;
