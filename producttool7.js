@@ -166,7 +166,7 @@ unlayer.registerTool({
           widget: 'speaker_library',
         },
         speakerTitleColor: {
-          label: 'Speaker Name Color',
+          label: a,
           defaultValue: '#000000',
           widget: 'color_picker',
         },
