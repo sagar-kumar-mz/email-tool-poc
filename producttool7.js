@@ -37,6 +37,7 @@ const modalTemplate = function (data) {
 };
 
 const toolTemplate = function (values, isViewer = false) {
+console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
     <img src="${
       values?.speakerImage?.url
@@ -50,7 +51,7 @@ const toolTemplate = function (values, isViewer = false) {
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
-  //   console.log('values IMPO', values);
+  console.log('values?.speakerImage?.url toolEmailTemplate', values?.speakerImage?.url)
   return `
     <table speakerId="${
       values?.speakerLibrary?.selected?.id ? values?.speakerLibrary?.selected?.id : ''
@@ -170,6 +171,7 @@ unlayer.registerTool({
     const { name, value, data } = source;
     // Transform the values here
     // We will update selected values in property editor here
+console.log('newValues TRANSForm', speakerTitle)
     const newValues =
       name === 'speakerLibrary'
         ? {
