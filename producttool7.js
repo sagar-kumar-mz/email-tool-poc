@@ -163,34 +163,11 @@ unlayer.registerTool({
           defaultValue: '',
           widget: 'speaker_library',
         },
-        speakerImage: {
-          label: 'Speaker Image',
-          defaultValue: {
-            url: 'https://s3.amazonaws.com/unroll-images-production/projects%2F167%2F1643875820464-188690',
-          },
-          widget: 'image',
-        },
-        speakerTitle: {
-          label: 'Speaker Title',
-          defaultValue: 'Speaker Name',
-          widget: 'text',
-        },
         speakerTitleColor: {
           label: 'Speaker Title Color',
           defaultValue: '#000000',
           widget: 'color_picker',
-        },
-        speakerAbout: {
-          label: 'Speaker Description',
-          defaultValue:
-            'Company Name',
-          widget: 'rich_text',
-        },
-        speakerEmail: {
-          label: 'Speaker Email',
-          defaultValue: 'Designation',
-          widget: 'text',
-        },
+        }
         speakerEmailColor: {
           label: 'Speaker Email Color',
           defaultValue: '#34495E',
