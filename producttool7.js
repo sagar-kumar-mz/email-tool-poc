@@ -162,13 +162,6 @@ unlayer.registerTool({
           label: 'Add Speaker from store',
           defaultValue: '',
           widget: 'speaker_library',
-        },
-        speakerImage: {
-          label: 'Speaker Image',
-          defaultValue: {
-            url: 'https://s3.amazonaws.com/unroll-images-production/projects%2F167%2F1643875820464-188690',
-          },
-          widget: 'image',
         }
       },
     },
