@@ -40,7 +40,7 @@ const toolTemplate = function (values, isViewer = false) {
 console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
     <img src="${
-      values?.speakerImage?.url
+      values?.speakerImage?.url ? values?.speakerImage?.url : 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=630/uploads/users/988/posts/31255/image/What-is-public-speaking%20(1).jpg'
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3>
@@ -59,7 +59,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
     }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
       <tbody>
         <tr><td width="100%"><img id="${values?.speakerLibrary?.selected?.id}-speakerImage" src="${
-    values?.speakerImage?.url
+    values?.speakerImage?.url ? values?.speakerImage?.url : 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=630/uploads/users/988/posts/31255/image/What-is-public-speaking%20(1).jpg'
   }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" /></td></tr>
         <tr><td width="100%"><h3 id="${
           values?.speakerLibrary?.selected?.id
