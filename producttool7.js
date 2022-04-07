@@ -166,9 +166,7 @@ unlayer.registerTool({
           widget: 'speaker_library',
         },
         speakerTitleColor: {
-          label: (values) => {
-console.log('HHH',values)
-return value?.containerPadding},
+          label: 'Speaker Name Color',
           defaultValue: '#000000',
           widget: 'color_picker',
         },
@@ -220,7 +218,7 @@ console.log('newValues TRANSForm', value?.selected?.name)
     },
     head: {
       css(values) {console.log('css',values )},
-      js(values) {console.log('js',values )},
+      js(values) {return `const a = 'A'; console.log("Tool JavaScript", a);`},
     },
   },
 });
