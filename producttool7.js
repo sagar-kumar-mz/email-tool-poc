@@ -65,7 +65,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
           values?.speakerLibrary?.selected?.id
         }-speakerTitle" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
     values.speakerTitleColor
-  };">${values.speakerTitle}</h3></td></tr>
+  };">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3></td></tr>
         <tr><td width="100%"><div id="${
           values?.speakerLibrary?.selected?.id
         }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0">${values.speakerEmail},${
