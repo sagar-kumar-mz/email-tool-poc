@@ -167,8 +167,8 @@ unlayer.registerTool({
           label: 'Speaker Image',
           defaultValue: {
             url: 'https://s3.amazonaws.com/unroll-images-production/projects%2F167%2F1643875820464-188690',
-          },
-          widget: 'image',
+          }
+//           widget: 'image',
         }
       },
     },
