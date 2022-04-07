@@ -167,8 +167,8 @@ unlayer.registerTool({
         },
         speakerTitleColor: {
           label: (values) => {
-console.log('HHH',values )
-value?.containerPadding},
+console.log('HHH',values)
+return value?.containerPadding},
           defaultValue: '#000000',
           widget: 'color_picker',
         },
