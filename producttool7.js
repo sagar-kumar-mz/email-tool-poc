@@ -1,5 +1,5 @@
 const editorTemplate = '<button id="addProduct" class="button">Add Speaker</button>';
-
+console.log('Dada :>', products, item, data, values)
 const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
   <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
@@ -218,8 +218,8 @@ console.log('newValues TRANSForm', value?.selected?.name)
       },
     },
     head: {
-      css(values) {},
-      js(values) {},
+      css(values) {console.log('css',values )},
+      js(values) {console.log('js',values )},
     },
   },
 });
