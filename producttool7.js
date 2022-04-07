@@ -45,6 +45,7 @@ console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle}</h3>
       <div class="description">${values.speakerEmail}, ${values.speakerAbout}</div>
+      <p>toolTemplate</p>
     </div>
   </div>
   ${isViewer ? modalTemplate({ products: values.data.products }) : ''}`;
@@ -69,7 +70,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
           values?.speakerLibrary?.selected?.id
         }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0">${values.speakerEmail},${
     values.speakerAbout
-  }</div></td></tr>
+  }</div><p>toolEmailTemplate</p></td></tr>
       </tbody>
     </table>
   `;
