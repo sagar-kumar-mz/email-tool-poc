@@ -68,7 +68,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
           values?.speakerLibrary?.selected?.id
         }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0">${values.speakerEmail},${
     values.speakerAbout
-  }, </div></td></tr>
+  }</div></td></tr>
       </tbody>
     </table>
   `;
