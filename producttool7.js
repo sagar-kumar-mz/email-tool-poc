@@ -43,7 +43,7 @@ console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
       values?.speakerImage?.url
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
-      <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle}</h3>
+      <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3>
       <div class="description">${values.speakerEmail}, ${values.speakerAbout}</div>
       <p>toolTemplate</p>
     </div>
