@@ -169,17 +169,7 @@ unlayer.registerTool({
             url: 'https://s3.amazonaws.com/unroll-images-production/projects%2F167%2F1643875820464-188690',
           },
           widget: 'image',
-        },
-        speakerTitleColor: {
-          label: 'Speaker Title Color',
-          defaultValue: '#000000',
-          widget: 'color_picker',
-        },
-        speakerEmailColor: {
-          label: 'Speaker Email Color',
-          defaultValue: '#34495E',
-          widget: 'color_picker',
-        },
+        }
       },
     },
   },
