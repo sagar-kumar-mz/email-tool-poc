@@ -39,7 +39,7 @@ const modalTemplate = function (data) {
 const toolTemplate = function (values, isViewer = false) {
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
     <img src="${
-      values.speakerImage.url
+      values?.speakerImage?.url
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle}</h3>
