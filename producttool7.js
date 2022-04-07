@@ -172,7 +172,7 @@ unlayer.registerTool({
     const { name, value, data } = source;
     // Transform the values here
     // We will update selected values in property editor here
-console.log('newValues TRANSForm', speakerTitle)
+console.log('newValues TRANSForm', value.selected.name)
     const newValues =
       name === 'speakerLibrary'
         ? {
