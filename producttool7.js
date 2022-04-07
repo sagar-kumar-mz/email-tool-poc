@@ -36,7 +36,7 @@ const modalTemplate = function (data) {
 };
 
 const toolTemplate = function (values, isViewer = false) {
-console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
+console.log('values', values)
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
     <img src="${
       values?.speakerImage?.url ? values?.speakerImage?.url : 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=630/uploads/users/988/posts/31255/image/What-is-public-speaking%20(1).jpg'
@@ -52,7 +52,7 @@ console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
-  console.log('values?.speakerImage?.url toolEmailTemplate', values?.speakerImage?.url)
+console.log('values', values)
   return `
     <table speakerId="${
       values?.speakerLibrary?.selected?.id ? values?.speakerLibrary?.selected?.id : ''
