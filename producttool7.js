@@ -162,7 +162,12 @@ unlayer.registerTool({
           label: 'Add Speaker from store',
           defaultValue: '',
           widget: 'speaker_library',
-        }
+        },
+        speakerTitleColor: {
+          label: 'Speaker Title Color',
+          defaultValue: '#000000',
+          widget: 'color_picker',
+        },
       },
     },
   },
