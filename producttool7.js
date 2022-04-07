@@ -167,7 +167,7 @@ unlayer.registerTool({
           label: 'Speaker Title Color',
           defaultValue: '#000000',
           widget: 'color_picker',
-        }
+        },
         speakerEmailColor: {
           label: 'Speaker Email Color',
           defaultValue: '#34495E',
