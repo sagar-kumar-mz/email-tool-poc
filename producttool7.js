@@ -44,7 +44,8 @@ console.log('values?.speakerImage?.url toolTemplate', values?.speakerImage?.url)
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3>
-      <div class="description">${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</div>
+      <div class="description" style="color: ${values.speakerDesignationCompanyColor};">
+      ${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</div>
       <p>toolTemplate</p>
     </div>
   </div>
@@ -68,7 +69,9 @@ const toolEmailTemplate = function (values, isViewer = false) {
   };">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3></td></tr>
         <tr><td width="100%"><div id="${
           values?.speakerLibrary?.selected?.id
-        }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0">${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</div><p>toolEmailTemplate</p></td></tr>
+        }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0; color: ${
+    values.speakerDesignationCompanyColor
+  };">${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</div><p>toolEmailTemplate</p></td></tr>
       </tbody>
     </table>
   `;
@@ -165,6 +168,11 @@ unlayer.registerTool({
         },
         speakerTitleColor: {
           label: 'Speaker Title Color',
+          defaultValue: '#000000',
+          widget: 'color_picker',
+        },
+        speakerDesignationCompanyColor: {
+          label: 'Speaker Designation & Company Color',
           defaultValue: '#000000',
           widget: 'color_picker',
         },
