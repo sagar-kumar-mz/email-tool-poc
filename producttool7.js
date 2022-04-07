@@ -1,4 +1,5 @@
 const editorTemplate = '<button id="addProduct" class="button">Add Speaker</button>';
+console.log('aaaaa', a)
 const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
   <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
