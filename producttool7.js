@@ -166,7 +166,7 @@ unlayer.registerTool({
         },
         speakerTitleColor: {
           label: 'Speaker Name Color',
-          defaultValue: '#000000',
+          defaultValue: b,
           widget: 'color_picker',
         },
         speakerDesignationCompanyColor: {
