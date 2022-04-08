@@ -1,4 +1,5 @@
 const editorTemplate = `<button id="addProduct" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Speaker</button>`;
+const searchButton =  `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
   <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
@@ -21,7 +22,7 @@ const modalTemplate = function (data) {
         <div class="modal-body">
           <div class="search-box">
             <input type="text" class="form-control" placeholder="Search by speaker name" id="search-bar" style="width: 78%" />
-            <button id="search-btn" class="button" style="width: 20%;color: `${theme.secondary}`;background-color:`${theme.primary}`;">Search</button>
+            ${searchButton}
           </div>
           <div class="products-list">
             ${productItemsTemplate(data)}
