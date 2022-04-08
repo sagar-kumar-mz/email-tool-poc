@@ -37,23 +37,20 @@ const modalTemplate = function (data) {
 };
 
 const toolTemplate = function (values, isViewer = false) {
-console.log('values', values)
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
     <img src="${
       values?.speakerImage?.url ? values?.speakerImage?.url : 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=630/uploads/users/988/posts/31255/image/What-is-public-speaking%20(1).jpg'
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
       <h3 style="margin: 12px 0; color: ${values.speakerTitleColor};">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3>
-      <div class="description" style="color: ${values.speakerDesignationCompanyColor};">
-      ${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</div>
-      <p>toolTemplate</p>
+      <h4 class="description" style="color: ${values.speakerDesignationCompanyColor};">
+      ${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</h4>
     </div>
   </div>
   ${isViewer ? modalTemplate({ products: values.data.products }) : ''}`;
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
-console.log('values', values)
   return `
     <table speakerId="${
       values?.speakerLibrary?.selected?.id ? values?.speakerLibrary?.selected?.id : ''
@@ -65,11 +62,11 @@ console.log('values', values)
         <tr><td width="100%"><h3 id="${
           values?.speakerLibrary?.selected?.id
         }-speakerTitle" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${values.speakerTitleColor};">${values.speakerTitle ? values.speakerTitle : 'Speaker Name'}</h3></td></tr>
-        <tr><td width="100%"><div id="${
+        <tr><td width="100%"><h4 id="${
           values?.speakerLibrary?.selected?.id
         }-speakerAbout" class="description" style="text-align: left;padding: 0 16px; margin: 0 0 12px 0; color: ${
     values.speakerDesignationCompanyColor
-  };">${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</div><p>toolEmailTemplate</p></td></tr>
+  };">${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</h4></td></tr>
       </tbody>
     </table>
   `;
@@ -166,12 +163,12 @@ unlayer.registerTool({
         },
         speakerTitleColor: {
           label: 'Speaker Name Color',
-          defaultValue: theme.primary,
+          defaultValue: theme?.primary,
           widget: 'color_picker',
         },
         speakerDesignationCompanyColor: {
           label: 'Speaker Designation & Company Color',
-          defaultValue: theme.secondary,
+          defaultValue: theme?.secondary,
           widget: 'color_picker',
         },
       },
@@ -216,8 +213,8 @@ console.log('newValues TRANSForm', value?.selected?.name)
       },
     },
     head: {
-      css(values) {console.log('css',values )},
-      js(values) {return `const a = 'A'; console.log("Tool JavaScript", a);`},
+      css(values) {},
+      js(values) {},
     },
   },
 });
