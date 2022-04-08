@@ -4,8 +4,8 @@ const productItemsTemplate = _.template(`
 <% _.forEach(products, function(item) { %>
   <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
   <img src="<%= item.profile_img %>" style="max-height: 150px;min-height: 100px;width: 100%;" />
-    <h4 style="margin: 8px 0; text-align: left;"><%= item.name %> <%= JSON.stringify(item) %></h4>
-    <h5 style="margin: 8px 0; text-align: left;"><%= item.designation %>,<%= item.company %> </h5>
+    <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %> <%= JSON.stringify(item) %></h4>
+    <h5 style="margin: 8px 0; text-align: left;color: ${theme.secondary};"><%= item.designation %>,<%= item.company %> </h5>
   </div>
 <% }); %>
 `);
