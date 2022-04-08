@@ -47,7 +47,6 @@ const toolTemplate = function (values, isViewer = false) {
 const toolEmailTemplate = function (values, isViewer = false) {
 console.log('vallll',value)
   return `
-<></>
 //     <table logoId="${
 //       values?.boothLibrary?.selected?.id ? values?.boothLibrary?.selected?.id : ''
 //     }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
