@@ -6,7 +6,7 @@ const productItemsTemplate = _.template(`
   <img src="<%= item.profile_img %>" style="max-height: 150px;min-height: 100px;width: 100%;" />
     <h4 style="margin: 8px 0; text-align: left;"><%= item.name %></h4>
     <h5 style="margin: 8px 0; text-align: left;"><%= item.designation %>,<%= item.company %> </h5>
-    {console.log('aaa')}
+    ${item}
   </div>
 <% }); %>
 `);
