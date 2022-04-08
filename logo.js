@@ -45,6 +45,7 @@ const toolTemplate = function (values, isViewer = false) {
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
+console.log('xsxs', values)
   return `
     <p>ppp</p>
   `;  
@@ -132,9 +133,9 @@ unlayer.registerTool({
       name === 'logoLibrary'
         ? {
             ...values,
-            id: value.selected.id,
+            id: value?.selected?.id,
             logo_image: {
-              url: value.selected.img,
+              url: value?.selected?.img,
             },
           }
         : {
