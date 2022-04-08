@@ -147,7 +147,7 @@ unlayer.registerPropertyEditor({
 });
 
 unlayer.registerTool({
-  name: 'speaker_tool',
+  name: 'speaker_toola',
   label: 'Speaker',
   icon: 'fa-user-circle',
   supportedDisplayModes: ['web', 'email'],
