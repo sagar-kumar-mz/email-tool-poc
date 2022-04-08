@@ -118,8 +118,8 @@ unlayer.registerPropertyEditor({
 
 unlayer.registerTool({
   name: 'logo_tool',
-  label: 'Logo',
-  icon: 'fa-user-circle',
+  label: 'Logos',
+  icon: 'fa-calendar',
   supportedDisplayModes: ['web', 'email'],
   options: {
     logoContent: {
