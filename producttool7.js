@@ -1,7 +1,7 @@
 const editorTemplate = `<button id="addProduct" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Speaker</button>`;
 const searchButton =  `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const productItemsTemplate = _.template(`
-<% _.forEach(products, function(item) { %>
+<% _.forEach(speakers, function(item) { %>
   <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
   <img src="<%= item.profile_img %>" style="max-height: 150px;min-height: 100px;width: 100%;" />
     <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %> </h4>
@@ -47,7 +47,7 @@ const toolTemplate = function (values, isViewer = false) {
       ${values.speakerEmail ? values.speakerEmail: 'Designation'}, ${values.speakerAbout ? values.speakerAbout : 'Company'}</h4>
     </div>
   </div>
-  ${isViewer ? modalTemplate({ products: values.data.products }) : ''}`;
+  ${isViewer ? modalTemplate({ speakers: values.data.speakers }) : ''}`;
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
@@ -100,8 +100,8 @@ unlayer.registerPropertyEditor({
           selectButton.onclick = function (e) {
             if (e.target.id === 'product-item') {
               // If user clicks on product item
-              // Find selected item from products list
-              const selectedProduct = data.products.find(
+              // Find selected item from speakers list
+              const selectedProduct = data.speakers.find(
                 (item) => item.id === parseInt(e.target.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
@@ -109,13 +109,13 @@ unlayer.registerPropertyEditor({
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
               if (parent && parent.id !== 'product-item') return;
-              const selectedProduct = data.products.find(
+              const selectedProduct = data.speakers.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
             }
             hideModal();
-            // This is a hack to close property editor right bar on selecting an item from products list.
+            // This is a hack to close property editor right bar on selecting an item from speakers list.
             const outerBody = document.querySelector('#u_body');
             outerBody.click();
           };
@@ -126,17 +126,17 @@ unlayer.registerPropertyEditor({
           searchButton.onclick = function (e) {
             const list = document.querySelector('#product_library_modal .products-list');
             let filteredItem;
-            let productsListHtml;
-            if (list && data && data.products) {
+            let speakersListHtml;
+            if (list && data && data.speakers) {
               if (searchBar.value === '') {
-                productsListHtml = productItemsTemplate({ products: data.products });
+                speakersListHtml = productItemsTemplate({ speakers: data.speakers });
               } else {
-                filteredItem = data.products.filter((item) =>
+                filteredItem = data.speakers.filter((item) =>
                   item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                 );
-                productsListHtml = productItemsTemplate({ products: filteredItem });
+                speakersListHtml = productItemsTemplate({ speakers: filteredItem });
               }
-              list.innerHTML = productsListHtml;
+              list.innerHTML = speakersListHtml;
             }
           };
           closeBtn.onclick = hideModal;
