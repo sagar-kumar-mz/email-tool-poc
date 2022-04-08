@@ -45,10 +45,17 @@ const toolTemplate = function (values, isViewer = false) {
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
+console.log('vallll',value)
   return `
-    <table id="${values?.id ? values?.id : ''}"
-  }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
+    <table logoId="${
+      values?.boothLibrary?.selected?.id ? values?.boothLibrary?.selected?.id : ''
+    }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
       <tbody>
+        <tr><td width="100%"><img id="${values?.boothLibrary?.selected?.id}-boothImage" src="${
+     values?.boothImage?.url
+       ? values?.boothImage?.url
+       : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwaVn2Q6Hm6X6nA8nL9WlyVXGfCvUta1kQeA&usqp=CAU'
+   }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" /></td></tr>
       </tbody>
     </table>
   `;
