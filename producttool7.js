@@ -170,7 +170,7 @@ unlayer.registerTool({
         },
         speakerDesignationCompanyColor: {
           label: 'Speaker Designation & Company Color',
-          defaultValue: '#000000',
+          defaultValue: theme.secondary,
           widget: 'color_picker',
         },
       },
