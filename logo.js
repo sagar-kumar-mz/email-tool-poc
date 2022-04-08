@@ -38,14 +38,13 @@ const modalTemplate = function (data) {
 const toolTemplate = function (values, isViewer = false) {
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
     <img src="${
-      values.logo_image.url
+      values.logo_image.url ? values.logo_image.url : 'https://s3.amazonaws.com/unroll-images-production/projects%2F167%2F1643875820464-188690'
     }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
   </div>
   ${isViewer ? modalTemplate({ logos: values.data.logos }) : ''}`;
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
-  //   console.log('values IMPO', values);
   return `
     <table id="${values?.id ? values?.id : ''}"
   }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
