@@ -192,7 +192,7 @@ unlayer.registerTool({
       title: 'Booth Content',
       position: 1,
       options: {
-        boothLibrary: {
+        sessionLibrary: {
           label: 'Add Booth from store',
           defaultValue: '',
           widget: 'booth_library',
@@ -225,7 +225,7 @@ unlayer.registerTool({
     // Transform the values here
     // We will update selected values in property editor here
     const newValues =
-      name === 'boothLibrary'
+      name === 'sessionLibrary'
         ? {
             ...values,
             sessionName: value?.selected?.name,
