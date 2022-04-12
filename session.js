@@ -5,10 +5,10 @@ if(values?.speakers?.length){
 if(isPreview){
 return `
   <tr>
-    <td width="100%">
+    <td>
       <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">'speakers'</p>
     </td>
-    <td width="100%">
+    <td>
       <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
     </td>
   </tr>
