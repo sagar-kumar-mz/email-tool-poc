@@ -21,7 +21,9 @@ return `
  </div>
 `;
 }
-} else retuen '';
+} else {
+retuen '';
+}
 }
 
 const boothItemsTemplate = _.template(`
