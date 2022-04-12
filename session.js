@@ -49,7 +49,7 @@ const toolTemplate = function (values, isViewer = false) {
       </p>
     </div>
   </div>
-  ${isViewer ? modalTemplate({ session: values.data.session }) : ''}`;
+  ${isViewer ? modalTemplate({ booths: values.data.booths }) : ''}`;
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
