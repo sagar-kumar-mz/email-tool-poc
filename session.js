@@ -2,6 +2,8 @@ const editorTemplate = `<button id="booth" class="button" style="color: ${theme.
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const speakerAndBoothList = function (values, isPreview){
 if((values?.speakers?.length || values?.booths?.length) || !values?.sessionLibrary?.selected?.id ){
+console.log('values', values);
+console.log('values', console.log('values', values));
 if(isPreview){
 return `
   <tr>
