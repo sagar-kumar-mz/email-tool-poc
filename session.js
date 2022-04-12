@@ -6,9 +6,7 @@ if(isPreview){
 return `
   <tr>
     <td>
-      <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">'speakers'</p>
-    </td>
-    <td>
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${values?.speakers?.toString()}</p>
       <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
     </td>
   </tr>
@@ -16,7 +14,7 @@ return `
 } else {
 return `
  <div>
-  <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">'speakers'</p>
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${values?.speakers?.toString()}</p>
   <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
  </div>
 `;
