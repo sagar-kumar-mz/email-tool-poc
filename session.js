@@ -47,6 +47,7 @@ const toolTemplate = function (values, isViewer = false) {
   <p style="color:${values.sessionDescriptionColor};">
         ${values.description ? values.description : 'session description'}
       </p>
+      ${values.isShowSpeakerAndBooth ? <p>'speakers'</p> : false}
     </div>
   </div>
   ${isViewer ? modalTemplate({ sessions: values.data.sessions }) : ''}`;
@@ -70,9 +71,20 @@ const toolEmailTemplate = function (values, isViewer = false) {
   };">${values.sessionName ? values.sessionName : 'Session Name'}</h3></td></tr>
         <tr><td width="100%"><h3 id="${
           values?.sessionLibrary?.selected?.id
-        }-sessionDescription" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
+        }-sessionSpeakerAndBooth" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
+  ${
+    values.isShowSpeakerAndBooth ? (
+      <tr>
+        <td width="100%">
+          <p id="${values?.sessionLibrary?.selected?.id}-sessionDescription">'speakers'</p>
+        </td>
+      </tr>
+    ) : (
+      false
+    )
+  }
       </tbody>
     </table>
   `;
@@ -181,6 +193,11 @@ unlayer.registerTool({
           label: 'Session Description Color',
           defaultValue: theme?.secondary,
           widget: 'color_picker',
+        },
+        isShowSpeakerAndBooth: {
+          label: 'Show Speaker And Booth',
+          defaultValue: true,
+          widget: 'toggle',
         },
       },
     },
