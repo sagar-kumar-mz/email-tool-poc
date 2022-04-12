@@ -116,6 +116,7 @@ console.log('data', data, data.session)
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
               if (parent && parent.id !== 'session-item') return;
+              console.log('data', data)
               const selectedProduct = data.session.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
