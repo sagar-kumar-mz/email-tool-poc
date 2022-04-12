@@ -47,7 +47,7 @@ const toolTemplate = function (values, isViewer = false) {
   <p style="color:${values.sessionDescriptionColor};">
         ${values.description ? values.description : 'session description'}
       </p>
-      ${values.isShowSpeakerAndBooth ? <p>'speakers'</p> : false}
+      ${values.isShowSpeakerAndBooth && <p>'speakers'</p>}
     </div>
   </div>
   ${isViewer ? modalTemplate({ sessions: values.data.sessions }) : ''}`;
