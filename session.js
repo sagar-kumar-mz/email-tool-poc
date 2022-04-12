@@ -1,8 +1,8 @@
-const editorTemplate = `<button id="session" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Session</button>`;
+const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
-const sessionItemsTemplate = _.template(`
-<% _.forEach(session, function(item) { %>
-  <div class="product-item" id="session-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
+const boothItemsTemplate = _.template(`
+<% _.forEach(booths, function(item) { %>
+  <div class="product-item" id="booth-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
     <p style="color: ${theme.secondary};"><%= item.dateAndTime %></p>
     <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %></h4>
   </div>
@@ -11,20 +11,20 @@ const sessionItemsTemplate = _.template(`
 
 const modalTemplate = function (data) {
   return `
-  <div class="modal" id="session_library_modal">
+  <div class="modal" id="booth_library_modal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title">Session List</h3>
+          <h3 class="modal-title">Booth List</h3>
           <button class="close" id="modalCloseBtn">&times;</button>
         </div>
         <div class="modal-body">
           <div class="search-box">
-            <input type="text" class="form-control" placeholder="Search by session name" id="search-bar" style="width: 78%" />
+            <input type="text" class="form-control" placeholder="Search by booth name" id="search-bar" style="width: 78%" />
             ${searchButton}
           </div>
           <div class="products-list">
-            ${sessionItemsTemplate(data)}
+            ${boothItemsTemplate(data)}
           </div>
         </div>
         <div class="modal-footer">
@@ -79,12 +79,12 @@ const toolEmailTemplate = function (values, isViewer = false) {
 };
 
 const showModal = function () {
-  const modal = document.getElementById('session_library_modal');
+  const modal = document.getElementById('booth_library_modal');
   modal.classList.add('show');
 };
 
 const hideModal = function () {
-  const modal = document.getElementById('session_library_modal');
+  const modal = document.getElementById('booth_library_modal');
   modal.classList.remove('show');
 };
 
@@ -96,8 +96,7 @@ unlayer.registerPropertyEditor({
       return editorTemplate;
     },
     mount(node, value, updateValue, data) {
-      console.log('data :>', data);
-      const addButton = node.querySelector('#session');
+      const addButton = node.querySelector('#booth');
       addButton.onclick = function () {
         showModal();
         setTimeout(() => {
@@ -105,26 +104,24 @@ unlayer.registerPropertyEditor({
           const selectButton = document.querySelector('.products-list');
           if (!selectButton) return;
           selectButton.onclick = function (e) {
-            if (e.target.id === 'session-item') {
+            if (e.target.id === 'booth-item') {
               // If user clicks on product item
-              // Find selected item from session list
-              console.log('data', data, data.session);
-              const selectedProduct = data.session.find(
+              // Find selected item from booths list
+              const selectedProduct = data.booths.find(
                 (item) => item.id === parseInt(e.target.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
             } else {
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
-              if (parent && parent.id !== 'session-item') return;
-              console.log('data', data);
-              const selectedProduct = data.session.find(
+              if (parent && parent.id !== 'booth-item') return;
+              const selectedProduct = data.booths.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
             }
             hideModal();
-            // This is a hack to close property editor right bar on selecting an item from session list.
+            // This is a hack to close property editor right bar on selecting an item from booths list.
             const outerBody = document.querySelector('#u_body');
             outerBody.click();
           };
@@ -133,17 +130,17 @@ unlayer.registerPropertyEditor({
           const searchButton = document.querySelector('#search-btn');
           const closeBtn = document.querySelector('#modalCloseBtn');
           searchButton.onclick = function (e) {
-            const list = document.querySelector('#session_library_modal .products-list');
+            const list = document.querySelector('#booth_library_modal .products-list');
             let filteredItem;
             let boothListHtml;
-            if (list && data && data.session) {
+            if (list && data && data.booths) {
               if (searchBar.value === '') {
-                boothListHtml = sessionItemsTemplate({ session: data.session });
+                boothListHtml = boothItemsTemplate({ booths: data.booths });
               } else {
-                filteredItem = data.session.filter((item) =>
+                filteredItem = data.booths.filter((item) =>
                   item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                 );
-                boothListHtml = sessionItemsTemplate({ session: filteredItem });
+                boothListHtml = boothItemsTemplate({ booths: filteredItem });
               }
               list.innerHTML = boothListHtml;
             }
@@ -165,7 +162,7 @@ unlayer.registerTool({
       title: 'Booth Content',
       position: 1,
       options: {
-        sessionLibrary: {
+        boothLibrary: {
           label: 'Add Booth from store',
           defaultValue: '',
           widget: 'booth_library',
@@ -193,7 +190,7 @@ unlayer.registerTool({
     // Transform the values here
     // We will update selected values in property editor here
     const newValues =
-      name === 'sessionLibrary'
+      name === 'boothLibrary'
         ? {
             ...values,
             sessionName: value?.selected?.name,
