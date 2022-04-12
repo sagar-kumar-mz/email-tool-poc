@@ -1,13 +1,27 @@
 const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
-const speakerAndBoothList = function (values){
+const speakerAndBoothList = function (values, isPreview){
+if(values?.speakers?.length){
+if(isPreview){
 return `
   <tr>
     <td width="100%">
-      <p id="${values?.sessionLibrary?.selected?.id}-sessionDescription">'speakers'</p>
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">'speakers'</p>
+    </td>
+    <td width="100%">
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
     </td>
   </tr>
 `;
+} else {
+return `
+ <div>
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">'speakers'</p>
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
+ </div>
+`;
+}
+} else retuen '';
 }
 
 const boothItemsTemplate = _.template(`
@@ -57,7 +71,7 @@ const toolTemplate = function (values, isViewer = false) {
   <p style="color:${values.sessionDescriptionColor};">
         ${values.description ? values.description : 'session description'}
       </p>
-      ${values.isShowSpeakerAndBooth ? 'speakers' : ''}
+      ${values.isShowSpeakerAndBooth ? speakerAndBoothList(values) : ''}
     </div>
   </div>
   ${isViewer ? modalTemplate({ sessions: values.data.sessions }) : ''}`;
@@ -85,7 +99,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
   ${values.isShowSpeakerAndBooth ?
-      speakerAndBoothList(values) : ''
+      speakerAndBoothList(values, true) : ''
   }
       </tbody>
     </table>
@@ -215,6 +229,7 @@ unlayer.registerTool({
             sessionName: value?.selected?.name,
             dateAndTime: value?.selected?.dateAndTime,
             description: value?.selected?.description,
+            speakers:value?.selected?.speakers,
           }
         : {
             ...values,
