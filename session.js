@@ -107,6 +107,7 @@ unlayer.registerPropertyEditor({
             if (e.target.id === 'session-item') {
               // If user clicks on product item
               // Find selected item from session list
+console.log('data', data, data.session)
               const selectedProduct = data.session.find(
                 (item) => item.id === parseInt(e.target.dataset.uuid)
               );
