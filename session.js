@@ -1,5 +1,15 @@
 const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
+const speakerAndBoothList = function (values){
+return `
+  <tr>
+    <td width="100%">
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionDescription">'speakers'</p>
+    </td>
+  </tr>
+`;
+}
+
 const boothItemsTemplate = _.template(`
 <% _.forEach(sessions, function(item) { %>
   <div class="product-item" id="booth-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
@@ -75,7 +85,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
   ${values.isShowSpeakerAndBooth ?
-      'speakers' : ''
+      speakerAndBoothList(values) : ''
   }
       </tbody>
     </table>
