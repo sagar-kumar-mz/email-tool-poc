@@ -1,4 +1,4 @@
-const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Session</button>`;
+const editorTemplate = `<button id="session" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Session</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const sessionItemsTemplate = _.template(`
 <% _.forEach(session, function(item) { %>
@@ -96,7 +96,7 @@ unlayer.registerPropertyEditor({
       return editorTemplate;
     },
     mount(node, value, updateValue, data) {
-      const addButton = node.querySelector('#booth');
+      const addButton = node.querySelector('#session');
       addButton.onclick = function () {
         showModal();
         setTimeout(() => {
@@ -107,7 +107,7 @@ unlayer.registerPropertyEditor({
             if (e.target.id === 'session-item') {
               // If user clicks on product item
               // Find selected item from session list
-console.log('data', data, data.session)
+              console.log('data', data, data.session);
               const selectedProduct = data.session.find(
                 (item) => item.id === parseInt(e.target.dataset.uuid)
               );
@@ -116,7 +116,7 @@ console.log('data', data, data.session)
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
               if (parent && parent.id !== 'session-item') return;
-              console.log('data', data)
+              console.log('data', data);
               const selectedProduct = data.session.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
