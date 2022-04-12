@@ -1,21 +1,21 @@
 const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const speakerAndBoothList = function (values, isPreview){
-if(values?.speakers?.length || values?.booths?.length){
+if((values?.speakers?.length || values?.booths?.length) || !values?.sessionLibrary?.selected?.id ){
 if(isPreview){
 return `
   <tr>
     <td>
-      <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${values?.speakers?.toString()}</p>
-      <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${values?.booths?.toString()}</p>
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${!values?.sessionLibrary?.selected?.id ? ['a', 's', 'd'].toString(): values?.speakers?.toString()}</p>
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${!values?.sessionLibrary?.selected?.id ? ['q', 'w', 'e'].toString(): values?.booths?.toString()}</p>
     </td>
   </tr>
 `;
 } else {
 return `
  <div>
-  <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${values?.speakers?.toString()}</p>
-  <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${values?.booths?.toString()}</p>
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${!values?.sessionLibrary?.selected?.id ? ['a', 's', 'd'].toString(): values?.speakers?.toString()}</p>
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${!values?.sessionLibrary?.selected?.id ? ['q', 'w', 'e'].toString(): values?.booths?.toString()}</p>
  </div>
 `;
 }
