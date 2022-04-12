@@ -230,7 +230,7 @@ unlayer.registerTool({
             dateAndTime: value?.selected?.dateAndTime,
             description: value?.selected?.description,
             speakers: value?.selected?.speakers,
-            booths: value?.booths?.speakers,
+            booths: value?.selected?.booths,
           }
         : {
             ...values,
