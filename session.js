@@ -194,6 +194,8 @@ unlayer.registerTool({
         ? {
             ...values,
             sessionName: value?.selected?.name,
+            dateAndTime: value?.selected?.dateAndTime,
+            description: value?.selected?.description,
           }
         : {
             ...values,
