@@ -1,13 +1,13 @@
 const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const speakerAndBoothList = function (values, isPreview){
-if(values?.speakers?.length){
+if(values?.speakers?.length || values?.booths?.length){
 if(isPreview){
 return `
   <tr>
     <td>
       <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${values?.speakers?.toString()}</p>
-      <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${values?.booths?.toString()}</p>
     </td>
   </tr>
 `;
@@ -15,7 +15,7 @@ return `
 return `
  <div>
   <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${values?.speakers?.toString()}</p>
-  <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">'booth'</p>
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${values?.booths?.toString()}</p>
  </div>
 `;
 }
@@ -229,7 +229,8 @@ unlayer.registerTool({
             sessionName: value?.selected?.name,
             dateAndTime: value?.selected?.dateAndTime,
             description: value?.selected?.description,
-            speakers:value?.selected?.speakers,
+            speakers: value?.selected?.speakers,
+            booths: value?.booths?.speakers,
           }
         : {
             ...values,
