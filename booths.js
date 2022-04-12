@@ -1,30 +1,30 @@
-const editorTemplate = `<button id="session" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Session</button>`;
+const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
-const sessionItemsTemplate = _.template(`
-<% _.forEach(session, function(item) { %>
-  <div class="product-item" id="session-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
-    <p style="color: ${theme.secondary};"><%= item.dateAndTime %></p>
-    <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %></h4>
+const boothItemsTemplate = _.template(`
+<% _.forEach(booths, function(item) { %>
+  <div class="product-item" id="booth-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-image="<%= item.profile_img %>" >
+  <img src="<%= item.profile_img %>" style="max-height: 150px;min-height: 100px;width: 100%;" />
+    <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %> </h4>
   </div>
 <% }); %>
 `);
 
 const modalTemplate = function (data) {
   return `
-  <div class="modal" id="session_library_modal">
+  <div class="modal" id="booth_library_modal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title">Session List</h3>
+          <h3 class="modal-title">Booth List</h3>
           <button class="close" id="modalCloseBtn">&times;</button>
         </div>
         <div class="modal-body">
           <div class="search-box">
-            <input type="text" class="form-control" placeholder="Search by session name" id="search-bar" style="width: 78%" />
+            <input type="text" class="form-control" placeholder="Search by booth name" id="search-bar" style="width: 78%" />
             ${searchButton}
           </div>
           <div class="products-list">
-            ${sessionItemsTemplate(data)}
+            ${boothItemsTemplate(data)}
           </div>
         </div>
         <div class="modal-footer">
@@ -37,54 +37,49 @@ const modalTemplate = function (data) {
 
 const toolTemplate = function (values, isViewer = false) {
   return `<div class="product-card" style="position:relative;display:table;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
+    <img src="${
+      values?.boothImage?.url
+        ? values?.boothImage?.url
+        : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwaVn2Q6Hm6X6nA8nL9WlyVXGfCvUta1kQeA&usqp=CAU'
+    }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" />
     <div class="product-card-body" style="padding: 0 16px 16px;text-align: left;">
-      <p style="color:${values.sessionDateAndTimeColor};">
-        ${values.dateAndTime ? values.dateAndTime : 'session date and time'}
-      </p>
-      <h3 style="margin: 12px 0; color: ${values.sessionNameColor};">${
-    values.sessionName ? values.sessionName : 'Session Name'
+      <h3 style="margin: 12px 0; color: ${values.boothNameColor};">${
+    values.boothName ? values.boothName : 'Booth Name'
   }</h3>
-  <p style="color:${values.sessionDescriptionColor};">
-        ${values.description ? values.description : 'session description'}
-      </p>
     </div>
   </div>
-  ${isViewer ? modalTemplate({ session: values.data.session }) : ''}`;
+  ${isViewer ? modalTemplate({ booths: values.data.booths }) : ''}`;
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
   return `
-    <table sessionId="${
-      values?.sessionLibrary?.selected?.id ? values?.sessionLibrary?.selected?.id : ''
+    <table boothId="${
+      values?.boothLibrary?.selected?.id ? values?.boothLibrary?.selected?.id : ''
     }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
       <tbody>
-        <tr><td width="100%"><p id="${
-          values?.sessionLibrary?.selected?.id
-        }-sessionDateAndTime" style="color:${values.sessionDateAndTimeColor};">
-        ${values.dateAndTime ? values.dateAndTime : 'session date and time'}
-      </p></td></tr>
+        <tr><td width="100%"><img id="${values?.boothLibrary?.selected?.id}-boothImage" src="${
+    values?.boothImage?.url
+      ? values?.boothImage?.url
+      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwaVn2Q6Hm6X6nA8nL9WlyVXGfCvUta1kQeA&usqp=CAU'
+  }" style="width: 100%; object-fit: contain; border-top-left-radius: 4px; border-top-right-radius: 4px;" /></td></tr>
         <tr><td width="100%"><h3 id="${
-          values?.sessionLibrary?.selected?.id
-        }-sessionName" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
-    values.sessionNameColor
-  };">${values.sessionName ? values.sessionName : 'Session Name'}</h3></td></tr>
-        <tr><td width="100%"><h3 id="${
-          values?.sessionLibrary?.selected?.id
-        }-sessionDescription" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
-    values.sessionDescriptionColor
-  };">${values.description ? values.description : 'Session description'}</h3></td></tr>
+          values?.boothLibrary?.selected?.id
+        }-boothName" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
+    values.boothNameColor
+  };">${values.boothName ? values.boothName : 'Booth Name'}</h3></td></tr>
+        
       </tbody>
     </table>
   `;
 };
 
 const showModal = function () {
-  const modal = document.getElementById('session_library_modal');
+  const modal = document.getElementById('booth_library_modal');
   modal.classList.add('show');
 };
 
 const hideModal = function () {
-  const modal = document.getElementById('session_library_modal');
+  const modal = document.getElementById('booth_library_modal');
   modal.classList.remove('show');
 };
 
@@ -96,7 +91,7 @@ unlayer.registerPropertyEditor({
       return editorTemplate;
     },
     mount(node, value, updateValue, data) {
-      const addButton = node.querySelector('#session');
+      const addButton = node.querySelector('#booth');
       addButton.onclick = function () {
         showModal();
         setTimeout(() => {
@@ -104,26 +99,24 @@ unlayer.registerPropertyEditor({
           const selectButton = document.querySelector('.products-list');
           if (!selectButton) return;
           selectButton.onclick = function (e) {
-            if (e.target.id === 'session-item') {
+            if (e.target.id === 'booth-item') {
               // If user clicks on product item
-              // Find selected item from session list
-              console.log('data', data, data.session);
-              const selectedProduct = data.session.find(
+              // Find selected item from booths list
+              const selectedProduct = data.booths.find(
                 (item) => item.id === parseInt(e.target.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
             } else {
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
-              if (parent && parent.id !== 'session-item') return;
-              console.log('data', data);
-              const selectedProduct = data.session.find(
+              if (parent && parent.id !== 'booth-item') return;
+              const selectedProduct = data.booths.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
             }
             hideModal();
-            // This is a hack to close property editor right bar on selecting an item from session list.
+            // This is a hack to close property editor right bar on selecting an item from booths list.
             const outerBody = document.querySelector('#u_body');
             outerBody.click();
           };
@@ -132,17 +125,17 @@ unlayer.registerPropertyEditor({
           const searchButton = document.querySelector('#search-btn');
           const closeBtn = document.querySelector('#modalCloseBtn');
           searchButton.onclick = function (e) {
-            const list = document.querySelector('#session_library_modal .products-list');
+            const list = document.querySelector('#booth_library_modal .products-list');
             let filteredItem;
             let boothListHtml;
-            if (list && data && data.session) {
+            if (list && data && data.booths) {
               if (searchBar.value === '') {
-                boothListHtml = sessionItemsTemplate({ session: data.session });
+                boothListHtml = boothItemsTemplate({ booths: data.booths });
               } else {
-                filteredItem = data.session.filter((item) =>
+                filteredItem = data.booths.filter((item) =>
                   item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                 );
-                boothListHtml = sessionItemsTemplate({ session: filteredItem });
+                boothListHtml = boothItemsTemplate({ booths: filteredItem });
               }
               list.innerHTML = boothListHtml;
             }
@@ -155,8 +148,8 @@ unlayer.registerPropertyEditor({
 });
 
 unlayer.registerTool({
-  name: 'session_tool',
-  label: 'Session',
+  name: 'booth_tool',
+  label: 'Booth',
   icon: 'fa-suitcase',
   supportedDisplayModes: ['web', 'email'],
   options: {
@@ -164,24 +157,14 @@ unlayer.registerTool({
       title: 'Booth Content',
       position: 1,
       options: {
-        sessionLibrary: {
+        boothLibrary: {
           label: 'Add Booth from store',
           defaultValue: '',
           widget: 'booth_library',
         },
-        sessionNameColor: {
-          label: 'Session Name Color',
+        boothNameColor: {
+          label: 'Speaker Name Color',
           defaultValue: theme?.primary,
-          widget: 'color_picker',
-        },
-        sessionDateAndTimeColor: {
-          label: 'Session Date And Time Color',
-          defaultValue: theme?.secondary,
-          widget: 'color_picker',
-        },
-        sessionDescriptionColor: {
-          label: 'Session Description Color',
-          defaultValue: theme?.secondary,
           widget: 'color_picker',
         },
       },
@@ -192,12 +175,13 @@ unlayer.registerTool({
     // Transform the values here
     // We will update selected values in property editor here
     const newValues =
-      name === 'sessionLibrary'
+      name === 'boothLibrary'
         ? {
             ...values,
-            sessionName: value?.selected?.name,
-            dateAndTime: value?.selected?.dateAndTime,
-            description: value?.selected?.description,
+            boothName: value?.selected?.name,
+            boothImage: {
+              url: value?.selected?.profile_img,
+            },
           }
         : {
             ...values,
