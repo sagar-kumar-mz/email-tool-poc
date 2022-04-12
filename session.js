@@ -75,11 +75,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
   ${values.isShowSpeakerAndBooth ?
-      <tr>
-        <td width="100%">
-          <p id="${values?.sessionLibrary?.selected?.id}-sessionDescription">'speakers'</p>
-        </td>
-      </tr> : ''
+      'speakers' : ''
   }
       </tbody>
     </table>
