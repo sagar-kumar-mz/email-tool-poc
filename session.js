@@ -153,8 +153,8 @@ unlayer.registerPropertyEditor({
 });
 
 unlayer.registerTool({
-  name: 'booth_tool',
-  label: 'Booth',
+  name: 'session_tool',
+  label: 'Session',
   icon: 'fa-suitcase',
   supportedDisplayModes: ['web', 'email'],
   options: {
