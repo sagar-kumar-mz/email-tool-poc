@@ -1,7 +1,7 @@
 const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const boothItemsTemplate = _.template(`
-<% _.forEach(booths, function(item) { %>
+<% _.forEach(sessions, function(item) { %>
   <div class="product-item" id="booth-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
     <p style="color: ${theme.secondary};"><%= item.dateAndTime %></p>
     <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %></h4>
@@ -49,7 +49,7 @@ const toolTemplate = function (values, isViewer = false) {
       </p>
     </div>
   </div>
-  ${isViewer ? modalTemplate({ booths: values.data.booths }) : ''}`;
+  ${isViewer ? modalTemplate({ sessions: values.data.sessions }) : ''}`;
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
@@ -106,8 +106,8 @@ unlayer.registerPropertyEditor({
           selectButton.onclick = function (e) {
             if (e.target.id === 'booth-item') {
               // If user clicks on product item
-              // Find selected item from booths list
-              const selectedProduct = data.booths.find(
+              // Find selected item from sessions list
+              const selectedProduct = data.sessions.find(
                 (item) => item.id === parseInt(e.target.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
@@ -115,13 +115,13 @@ unlayer.registerPropertyEditor({
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
               if (parent && parent.id !== 'booth-item') return;
-              const selectedProduct = data.booths.find(
+              const selectedProduct = data.sessions.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
               updateValue({ selected: selectedProduct });
             }
             hideModal();
-            // This is a hack to close property editor right bar on selecting an item from booths list.
+            // This is a hack to close property editor right bar on selecting an item from sessions list.
             const outerBody = document.querySelector('#u_body');
             outerBody.click();
           };
@@ -133,14 +133,14 @@ unlayer.registerPropertyEditor({
             const list = document.querySelector('#booth_library_modal .products-list');
             let filteredItem;
             let boothListHtml;
-            if (list && data && data.booths) {
+            if (list && data && data.sessions) {
               if (searchBar.value === '') {
-                boothListHtml = boothItemsTemplate({ booths: data.booths });
+                boothListHtml = boothItemsTemplate({ sessions: data.sessions });
               } else {
-                filteredItem = data.booths.filter((item) =>
+                filteredItem = data.sessions.filter((item) =>
                   item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                 );
-                boothListHtml = boothItemsTemplate({ booths: filteredItem });
+                boothListHtml = boothItemsTemplate({ sessions: filteredItem });
               }
               list.innerHTML = boothListHtml;
             }
