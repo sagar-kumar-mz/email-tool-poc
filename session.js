@@ -96,6 +96,7 @@ unlayer.registerPropertyEditor({
       return editorTemplate;
     },
     mount(node, value, updateValue, data) {
+      console.log('data :>', data);
       const addButton = node.querySelector('#session');
       addButton.onclick = function () {
         showModal();
