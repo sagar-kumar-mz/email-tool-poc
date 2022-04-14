@@ -111,7 +111,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
   };">${values.sessionName ? values.sessionName : 'Session Name'}</h3></td></tr>
         <tr><td width="100%"><h3 id="${
           values?.boothLibrary?.selected?.id
-        }-sessionSpeakerAndBooth" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
+        }-sessionDescription" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
   ${values.isShowSpeakerAndBooth ? speakerAndBoothList(values, true) : ''}
@@ -131,7 +131,7 @@ const hideModal = function () {
 };
 
 unlayer.registerPropertyEditor({
-  name: 'booth_library',
+  name: 'session_library',
   layout: 'bottom',
   Widget: unlayer.createWidget({
     render(value, updateValue, data) {
@@ -207,7 +207,7 @@ unlayer.registerTool({
         boothLibrary: {
           label: 'Add Session from store',
           defaultValue: '',
-          widget: 'booth_library',
+          widget: 'session_library',
         },
         sessionNameColor: {
           label: 'Session Name Color',
