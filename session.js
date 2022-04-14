@@ -1,30 +1,46 @@
-const editorTemplate = `<button id="booth" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
+const editorTemplate = `<button id="session" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Booth</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
-const speakerAndBoothList = function (values, isPreview){
-if((values?.speakers?.length || values?.booths?.length) || !values?.boothLibrary?.selected?.id ){
-console.log('values', values);
-console.log('values', console.log('values', values));
-if(isPreview){
-return `
+const speakerAndBoothList = function (values, isPreview) {
+  if (values?.speakers?.length || values?.booths?.length || !values?.boothLibrary?.selected?.id) {
+    console.log('values', values);
+    console.log('values', console.log('values', values));
+    if (isPreview) {
+      return `
   <tr>
     <td>
-      <p id="${values?.boothLibrary?.selected?.id}-sessionSpeaker">${!values?.boothLibrary?.selected?.id ? ['a', 's', 'd'].toString(): values?.speakers?.toString()}</p>
-      <p id="${values?.boothLibrary?.selected?.id}-sessionBooth">${!values?.boothLibrary?.selected?.id ? ['q', 'w', 'e'].toString(): values?.booths?.toString()}</p>
+      <p id="${values?.boothLibrary?.selected?.id}-sessionSpeaker">${
+        !values?.boothLibrary?.selected?.id
+          ? ['a', 's', 'd'].toString()
+          : values?.speakers?.toString()
+      }</p>
+      <p id="${values?.boothLibrary?.selected?.id}-sessionBooth">${
+        !values?.boothLibrary?.selected?.id
+          ? ['q', 'w', 'e'].toString()
+          : values?.booths?.toString()
+      }</p>
     </td>
   </tr>
 `;
-} else {
-return `
+    } else {
+      return `
  <div>
-  <p id="${values?.boothLibrary?.selected?.id}-sessionSpeaker">${!values?.boothLibrary?.selected?.id ? ['a', 's', 'd'].toString(): values?.speakers?.toString()}</p>
-  <p id="${values?.boothLibrary?.selected?.id}-sessionBooth">${!values?.boothLibrary?.selected?.id ? ['q', 'w', 'e'].toString(): values?.booths?.toString()}</p>
+  <p id="${values?.boothLibrary?.selected?.id}-sessionSpeaker">${
+        !values?.boothLibrary?.selected?.id
+          ? ['a', 's', 'd'].toString()
+          : values?.speakers?.toString()
+      }</p>
+  <p id="${values?.boothLibrary?.selected?.id}-sessionBooth">${
+        !values?.boothLibrary?.selected?.id
+          ? ['q', 'w', 'e'].toString()
+          : values?.booths?.toString()
+      }</p>
  </div>
 `;
-}
-} else {
-return ``;
-}
-}
+    }
+  } else {
+    return ``;
+  }
+};
 
 const boothItemsTemplate = _.template(`
 <% _.forEach(sessions, function(item) { %>
@@ -46,7 +62,7 @@ const modalTemplate = function (data) {
         </div>
         <div class="modal-body">
           <div class="search-box">
-            <input type="text" class="form-control" placeholder="Search by booth name" id="search-bar" style="width: 78%" />
+            <input type="text" class="form-control" placeholder="Search by session name" id="search-bar" style="width: 78%" />
             ${searchButton}
           </div>
           <div class="products-list">
@@ -100,9 +116,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
         }-sessionSpeakerAndBooth" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
-  ${values.isShowSpeakerAndBooth ?
-      speakerAndBoothList(values, true) : ''
-  }
+  ${values.isShowSpeakerAndBooth ? speakerAndBoothList(values, true) : ''}
       </tbody>
     </table>
   `;
@@ -126,7 +140,7 @@ unlayer.registerPropertyEditor({
       return editorTemplate;
     },
     mount(node, value, updateValue, data) {
-      const addButton = node.querySelector('#booth');
+      const addButton = node.querySelector('#session');
       addButton.onclick = function () {
         showModal();
         setTimeout(() => {
