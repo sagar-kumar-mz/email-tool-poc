@@ -1,20 +1,18 @@
 const editorTemplate = `<button id="session" class="button" style="color: ${theme.secondary};background-color:${theme.primary};">Add Session</button>`;
 const searchButton = `<button id="search-btn" class="button" style="width: 20%;color: ${theme.secondary};background-color:${theme.primary};">Search</button>`;
 const speakerAndBoothList = function (values, isPreview) {
-  if (values?.speakers?.length || values?.booths?.length || !values?.boothLibrary?.selected?.id) {
-    console.log('values', values);
-    console.log('values', console.log('values', values));
+  if (values?.speakers?.length || values?.booths?.length || !values?.sessionLibrary?.selected?.id) {
     if (isPreview) {
       return `
   <tr>
     <td>
-      <p id="${values?.boothLibrary?.selected?.id}-sessionSpeaker">${
-        !values?.boothLibrary?.selected?.id
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${
+        !values?.sessionLibrary?.selected?.id
           ? ['a', 's', 'd'].toString()
           : values?.speakers?.toString()
       }</p>
-      <p id="${values?.boothLibrary?.selected?.id}-sessionBooth">${
-        !values?.boothLibrary?.selected?.id
+      <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${
+        !values?.sessionLibrary?.selected?.id
           ? ['q', 'w', 'e'].toString()
           : values?.booths?.toString()
       }</p>
@@ -24,13 +22,13 @@ const speakerAndBoothList = function (values, isPreview) {
     } else {
       return `
  <div>
-  <p id="${values?.boothLibrary?.selected?.id}-sessionSpeaker">${
-        !values?.boothLibrary?.selected?.id
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">${
+        !values?.sessionLibrary?.selected?.id
           ? ['a', 's', 'd'].toString()
           : values?.speakers?.toString()
       }</p>
-  <p id="${values?.boothLibrary?.selected?.id}-sessionBooth">${
-        !values?.boothLibrary?.selected?.id
+  <p id="${values?.sessionLibrary?.selected?.id}-sessionBooth">${
+        !values?.sessionLibrary?.selected?.id
           ? ['q', 'w', 'e'].toString()
           : values?.booths?.toString()
       }</p>
@@ -98,21 +96,21 @@ const toolTemplate = function (values, isViewer = false) {
 const toolEmailTemplate = function (values, isViewer = false) {
   return `
     <table sessionId="${
-      values?.boothLibrary?.selected?.id ? values?.boothLibrary?.selected?.id : ''
+      values?.sessionLibrary?.selected?.id ? values?.sessionLibrary?.selected?.id : ''
     }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
       <tbody>
         <tr><td width="100%"><p id="${
-          values?.boothLibrary?.selected?.id
+          values?.sessionLibrary?.selected?.id
         }-sessionDateAndTime" style="color:${values.sessionDateAndTimeColor};">
         ${values.dateAndTime ? values.dateAndTime : 'session date and time'}
       </p></td></tr>
         <tr><td width="100%"><h3 id="${
-          values?.boothLibrary?.selected?.id
+          values?.sessionLibrary?.selected?.id
         }-sessionName" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
     values.sessionNameColor
   };">${values.sessionName ? values.sessionName : 'Session Name'}</h3></td></tr>
         <tr><td width="100%"><h3 id="${
-          values?.boothLibrary?.selected?.id
+          values?.sessionLibrary?.selected?.id
         }-sessionSpeakerAndBooth" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
     values.sessionDescriptionColor
   };">${values.description ? values.description : 'Session description'}</h3></td></tr>
@@ -206,7 +204,7 @@ unlayer.registerTool({
       title: 'Booth Content',
       position: 1,
       options: {
-        boothLibrary: {
+        sessionLibrary: {
           label: 'Add Booth from store',
           defaultValue: '',
           widget: 'booth_library',
@@ -239,7 +237,7 @@ unlayer.registerTool({
     // Transform the values here
     // We will update selected values in property editor here
     const newValues =
-      name === 'boothLibrary'
+      name === 'sessionLibrary'
         ? {
             ...values,
             sessionName: value?.selected?.name,
