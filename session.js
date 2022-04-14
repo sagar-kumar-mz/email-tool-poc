@@ -40,7 +40,7 @@ const speakerAndBoothList = function (values, isPreview) {
   }
 };
 
-const boothItemsTemplate = _.template(`
+const sessionItemsTemplate = _.template(`
 <% _.forEach(sessions, function(item) { %>
   <div class="product-item" id="session-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
     <p style="color: ${theme.secondary};"><%= item.dateAndTime %></p>
@@ -64,7 +64,7 @@ const modalTemplate = function (data) {
             ${searchButton}
           </div>
           <div class="products-list">
-            ${boothItemsTemplate(data)}
+            ${sessionItemsTemplate(data)}
           </div>
         </div>
         <div class="modal-footer">
@@ -177,12 +177,12 @@ unlayer.registerPropertyEditor({
             let boothListHtml;
             if (list && data && data.sessions) {
               if (searchBar.value === '') {
-                boothListHtml = boothItemsTemplate({ sessions: data.sessions });
+                boothListHtml = sessionItemsTemplate({ sessions: data.sessions });
               } else {
                 filteredItem = data.sessions.filter((item) =>
                   item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                 );
-                boothListHtml = boothItemsTemplate({ sessions: filteredItem });
+                boothListHtml = sessionItemsTemplate({ sessions: filteredItem });
               }
               list.innerHTML = boothListHtml;
             }
