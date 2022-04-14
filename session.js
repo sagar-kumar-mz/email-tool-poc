@@ -51,7 +51,7 @@ const sessionItemsTemplate = _.template(`
 
 const modalTemplate = function (data) {
   return `
-  <div class="modal" id="booth_library_modal">
+  <div class="modal" id="session_library_modal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -121,12 +121,12 @@ const toolEmailTemplate = function (values, isViewer = false) {
 };
 
 const showModal = function () {
-  const modal = document.getElementById('booth_library_modal');
+  const modal = document.getElementById('session_library_modal');
   modal.classList.add('show');
 };
 
 const hideModal = function () {
-  const modal = document.getElementById('booth_library_modal');
+  const modal = document.getElementById('session_library_modal');
   modal.classList.remove('show');
 };
 
@@ -172,7 +172,7 @@ unlayer.registerPropertyEditor({
           const searchButton = document.querySelector('#search-btn');
           const closeBtn = document.querySelector('#modalCloseBtn');
           searchButton.onclick = function (e) {
-            const list = document.querySelector('#booth_library_modal .products-list');
+            const list = document.querySelector('#session_library_modal .products-list');
             let filteredItem;
             let boothListHtml;
             if (list && data && data.sessions) {
