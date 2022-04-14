@@ -174,17 +174,17 @@ unlayer.registerPropertyEditor({
           searchButton.onclick = function (e) {
             const list = document.querySelector('#session_library_modal .products-list');
             let filteredItem;
-            let boothListHtml;
+            let sessionListHtml;
             if (list && data && data.sessions) {
               if (searchBar.value === '') {
-                boothListHtml = sessionItemsTemplate({ sessions: data.sessions });
+                sessionListHtml = sessionItemsTemplate({ sessions: data.sessions });
               } else {
                 filteredItem = data.sessions.filter((item) =>
                   item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                 );
-                boothListHtml = sessionItemsTemplate({ sessions: filteredItem });
+                sessionListHtml = sessionItemsTemplate({ sessions: filteredItem });
               }
-              list.innerHTML = boothListHtml;
+              list.innerHTML = sessionListHtml;
             }
           };
           closeBtn.onclick = hideModal;
