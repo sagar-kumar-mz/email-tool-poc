@@ -42,7 +42,7 @@ const speakerAndBoothList = function (values, isPreview) {
 
 const boothItemsTemplate = _.template(`
 <% _.forEach(sessions, function(item) { %>
-  <div class="product-item" id="booth-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
+  <div class="product-item" id="session-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
     <p style="color: ${theme.secondary};"><%= item.dateAndTime %></p>
     <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %></h4>
   </div>
@@ -146,7 +146,7 @@ unlayer.registerPropertyEditor({
           const selectButton = document.querySelector('.products-list');
           if (!selectButton) return;
           selectButton.onclick = function (e) {
-            if (e.target.id === 'booth-item') {
+            if (e.target.id === 'session-item') {
               // If user clicks on product item
               // Find selected item from sessions list
               const selectedProduct = data.sessions.find(
@@ -156,7 +156,7 @@ unlayer.registerPropertyEditor({
             } else {
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
-              if (parent && parent.id !== 'booth-item') return;
+              if (parent && parent.id !== 'session-item') return;
               const selectedProduct = data.sessions.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
