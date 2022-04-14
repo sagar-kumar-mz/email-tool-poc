@@ -55,7 +55,7 @@ const modalTemplate = function (data) {
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title">Booth List</h3>
+          <h3 class="modal-title">Session List</h3>
           <button class="close" id="modalCloseBtn">&times;</button>
         </div>
         <div class="modal-body">
@@ -201,11 +201,11 @@ unlayer.registerTool({
   supportedDisplayModes: ['web', 'email'],
   options: {
     boothContent: {
-      title: 'Booth Content',
+      title: 'Session Content',
       position: 1,
       options: {
         boothLibrary: {
-          label: 'Add Booth from store',
+          label: 'Add Session from store',
           defaultValue: '',
           widget: 'booth_library',
         },
