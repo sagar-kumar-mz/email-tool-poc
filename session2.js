@@ -238,7 +238,7 @@ unlayer.registerTool({
         },
         sessionDateAndTimeColor: {
           label: 'Session Date And Time Color',
-          defaultValue: theme?.theme,
+          defaultValue: theme?.secondary,
           widget: 'color_picker',
         },
         sessionDescriptionColor: {
