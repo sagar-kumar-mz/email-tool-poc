@@ -1,59 +1,59 @@
 const editorTemplate = `<button id="session" class="button">Add Session</button>`;
 const searchButton = `<button id="search-btn" class="button">Search</button>`;
+const defaultSpeaker = `
+          <>
+            <div class="speaker">
+              <img src="https://picsum.photos/100" alt="pic" />
+            </div>
+            <div class="speaker">
+              <img src="https://picsum.photos/100" alt="pic" />
+            </div>
+            <div class="speaker">
+              <img src="https://picsum.photos/100" alt="pic" />
+            </div>
+            <div class="speaker">
+              <img src="https://picsum.photos/100" alt="pic" />
+            </div>
+            <div
+              class="speaker-more"
+              style="background-color:${theme.accent};color:${theme.secondary};">
+              +2
+            </div>
+          </>`;
+
+const defaultBooth = `
+          <>
+            <div class="booth"> 
+            <img src="https://picsum.photos/100" alt="pic" />
+            </div>
+            <div class="booth"> 
+              <img src="https://picsum.photos/100" alt="pic" />
+            </div>  
+            <div class="booth-more" style="background-color:${theme.accent};color:${theme.secondary};"> 
+              +2
+            </div> 
+          </>`;
+
 const speakerAndBoothList = function (values, isPreview) {
   if (values?.speakers?.length || values?.booths?.length || !values?.sessionLibrary?.selected?.id) {
     if (isPreview) {
       return ` 
-      <div class="session-speakers" id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">      
-        <div class="speaker"> 
-          <img src="https://picsum.photos/100" alt="pic" />
-        </div>
-        <div class="speaker"> 
-          <img src="https://picsum.photos/100" alt="pic" />
-        </div> 
-        <div class="speaker"> 
-          <img src="https://picsum.photos/100" alt="pic" />
-        </div> 
-        <div class="speaker"> 
-          <img src="https://picsum.photos/100" alt="pic" />
-        </div> 
-        <div class="speaker-more" style="background-color:${theme.accent};color:${theme.secondary};"> 
-          +2
-        </div> 
+      <div class="session-speakers" id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">
+      ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : values?.speakers?.toString()} 
+      </div>
+
+      <div class="session-booths" id="${values?.sessionLibrary?.selected?.id}-sessionBooth">
+      ${!values?.sessionLibrary?.selected?.id ? defaultBooth : values?.booths?.toString()}
       </div>`;
     } else {
       return ` 
       <div class="session-speakers" id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">
-      <div class="speaker"> 
-        <img src="https://picsum.photos/100" alt="pic" />
-      </div>
-      <div class="speaker"> 
-        <img src="https://picsum.photos/100" alt="pic" />
-      </div> 
-      <div class="speaker"> 
-        <img src="https://picsum.photos/100" alt="pic" />
-      </div> 
-      <div class="speaker"> 
-        <img src="https://picsum.photos/100" alt="pic" />
-      </div> 
-      <div class="speaker-more" style="background-color:${theme.accent};color:${theme.secondary};"> 
-        +2
-      </div>  
+      ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : values?.speakers?.toString()} 
       </div>
 
       <div class="session-booths" id="${values?.sessionLibrary?.selected?.id}-sessionBooth">
-      <div class="booth"> 
-      <img src="https://picsum.photos/100" alt="pic" />
-      </div>
-      <div class="booth"> 
-        <img src="https://picsum.photos/100" alt="pic" />
-      </div>  
-      <div class="booth-more" style="background-color:${theme.accent};color:${theme.secondary};"> 
-        +2
-      </div> 
-      
-      </div>  
-`;
+      ${!values?.sessionLibrary?.selected?.id ? defaultBooth : values?.booths?.toString()}
+      </div>`;
     }
   } else {
     return ``;
