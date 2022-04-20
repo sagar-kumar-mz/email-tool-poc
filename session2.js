@@ -1,7 +1,7 @@
 const editorTemplate = `<button id="session" class="button">Add Session</button>`;
 const searchButton = `<button id="search-btn" class="button">Search</button>`;
 const defaultSpeaker = `
-          <div>
+          <span>
             <div class="speaker">
               <img src="https://picsum.photos/100" alt="pic" />
             </div>
@@ -19,10 +19,10 @@ const defaultSpeaker = `
               style="background-color:${theme.accent};color:${theme.secondary};">
               +2
             </div>
-          </div>`;
+          </span>`;
 
 const defaultBooth = `
-          <div>
+          <span>
             <div class="booth"> 
             <img src="https://picsum.photos/100" alt="pic" />
             </div>
@@ -32,7 +32,7 @@ const defaultBooth = `
             <div class="booth-more" style="background-color:${theme.accent};color:${theme.secondary};"> 
               +2
             </div> 
-          </div>`;
+          </span>`;
 
 const speakerAndBoothList = function (values, isPreview) {
   if (values?.speakers?.length || values?.booths?.length || !values?.sessionLibrary?.selected?.id) {
@@ -300,3 +300,4 @@ unlayer.registerTool({
     },
   },
 });
+
