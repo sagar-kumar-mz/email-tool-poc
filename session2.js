@@ -15,7 +15,7 @@ const defaultSpeaker = `
             </div>
             <div
               class="speaker-more"
-              style="background-color:${theme.accent};color:${theme.secondary};">
+              style="background-color:${theme.accentColor}; color:${theme.secondaryFontColor};">
               +2
             </div>
          `;
@@ -27,7 +27,7 @@ const defaultBooth = `
             <div class="booth"> 
               <img src="https://picsum.photos/100" alt="pic" />
             </div>  
-            <div class="booth-more" style="background-color:${theme.accent};color:${theme.secondary};"> 
+            <div class="booth-more" style="background-color:${theme.accentColor};color:${theme.secondaryFontColor};"> 
               +2
             </div>`;
 
@@ -60,8 +60,8 @@ const speakerAndBoothList = function (values, isPreview) {
 const sessionItemsTemplate = _.template(`
 <% _.forEach(sessions, function(item) { %>
   <div class="session-item" id="session-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>"  data-date-time="<%= item.dateAndTime %>" >
-    <p style="color: ${theme.secondary};"> <%= item.dateAndTime %> </p>
-    <h4 style="margin: 8px 0; text-align: left; color: ${theme.primary};"><%= item.name %></h4>
+    <p style="color: ${theme.primaryFontColor};"> <%= item.dateAndTime %> </p>
+    <h4 style="margin: 8px 0; text-align: left; color: ${theme.primaryColor};"><%= item.name %></h4>
   </div>
 <% }); %>
 `);
@@ -234,17 +234,17 @@ unlayer.registerTool({
         },
         sessionNameColor: {
           label: 'Session Name Color',
-          defaultValue: theme?.primary,
+          defaultValue: theme?.primaryColor,
           widget: 'color_picker',
         },
         sessionDateAndTimeColor: {
           label: 'Session Date And Time Color',
-          defaultValue: theme?.secondary,
+          defaultValue: theme?.primaryFontColor,
           widget: 'color_picker',
         },
         sessionDescriptionColor: {
           label: 'Session Description Color',
-          defaultValue: theme?.secondary,
+          defaultValue: theme?.secondaryFontColor,
           widget: 'color_picker',
         },
         isShowSpeakerAndBooth: {
