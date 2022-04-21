@@ -21,13 +21,18 @@ const defaultSpeaker = `
          `;
 
 const speakerList = function (speakers) {
-  return speakers.map((speaker) => {
+  const spl = speakers.map((speaker, i) => {
+    if(i <= 4){
     return `
       <div class="speaker">
         <img src="${speaker}" alt="pic" />
       </div>
       `;
+    } else {
+      return false;
+    }
   });
+
 };
 
 const boothList = function (booths) {
