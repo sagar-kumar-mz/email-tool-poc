@@ -20,20 +20,17 @@ const defaultSpeaker = `
             </div>
          `;
 
+ 
 const speakerList = function (speakers) {
-  const spl = speakers.map((speaker, i) => {
-    if(i <= 4){
     return `
-      <div class="speaker">
-        <img src="${speaker}" alt="pic" />
-      </div>
-      `;
-    } else {
-      return false;
-    }
-  });
-  console.log('spl', spl);
-return spl;
+            ${speakers[0] ? <div class="speaker">
+              <img src="${speakers[0]}" alt="pic" />
+            </div> : '' }
+            <div
+              class="speaker-more"
+              style="background-color:${theme.accentColor}; color:${theme.secondaryFontColor};">
+              +2
+            </div>`;
 };
 
 const boothList = function (booths) {
