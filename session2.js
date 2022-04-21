@@ -22,15 +22,23 @@ const defaultSpeaker = `
 
  
 const speakerList = function (speakers) {
-    return `
-            ${speakers[0] ? <div class="speaker">
-              <img src="${speakers[0]}" alt="pic" />
-            </div> : '' }
-            <div
+  let sps = ``;
+   speakers.map((speaker, i) => {
+    if(i <= 3){
+      sps += ` <div class="speaker">
+                  <img src="${speaker}" alt="pic" />
+                </div>`;
+    }
+   })
+   if(speakers.length > 4){
+    sps += `<div
               class="speaker-more"
               style="background-color:${theme.accentColor}; color:${theme.secondaryFontColor};">
-              +2
-            </div>`;
+              ${speakers.length - 4}
+            </div>`; 
+   }
+   return sps;
+  
 };
 
 const boothList = function (booths) {
