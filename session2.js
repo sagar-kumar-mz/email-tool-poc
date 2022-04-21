@@ -155,32 +155,30 @@ const toolTemplate = function (values, isViewer = false) {
 };
 
 const toolEmailTemplate = function (values, isViewer = false) {
-  // return `
-  //   <table sessionId="${
-  //     values?.sessionLibrary?.selected?.id ? values?.sessionLibrary?.selected?.id : ''
-  //   }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
-  //     <tbody>
-  //       <tr><td width="100%"><p id="${
-  //         values?.sessionLibrary?.selected?.id
-  //       }-sessionDateAndTime" style="color:${values.sessionDateAndTimeColor};">
-  //       ${values.dateAndTime ? values.dateAndTime : 'session date and time'}
-  //     </p></td></tr>
-  //       <tr><td width="100%"><h3 id="${
-  //         values?.sessionLibrary?.selected?.id
-  //       }-sessionName" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
-  //   values.sessionNameColor
-  // };">${values.sessionName ? values.sessionName : 'Session Name'}</h3></td></tr>
-  //       <tr><td width="100%"><h3 id="${
-  //         values?.sessionLibrary?.selected?.id
-  //       }-sessionDescription" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
-  //   values.sessionDescriptionColor
-  // };">${values.description ? values.description : 'Session description'}</h3></td></tr>
-  // ${values.isShowSpeakerAndBooth ? speakerAndBoothList(values, true) : ''}
-  //     </tbody>
-  //   </table>
-  // `;
-  return `<div>hello
-  </div>`;
+  return `
+    <table sessionId="${
+      values?.sessionLibrary?.selected?.id ? values?.sessionLibrary?.selected?.id : ''
+    }" cellspacing="0" cellpadding="0" style="position:relative;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(0,0,0,.125);border-radius:4px;margin:auto;text-align:center;">
+      <tbody>
+        <tr><td width="100%"><p id="${
+          values?.sessionLibrary?.selected?.id
+        }-sessionDateAndTime" style="color:${values.sessionDateAndTimeColor};">
+        ${values.dateAndTime ? values.dateAndTime : 'session date and time'}
+      </p></td></tr>
+        <tr><td width="100%"><h3 id="${
+          values?.sessionLibrary?.selected?.id
+        }-sessionName" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
+    values.sessionNameColor
+  };">${values.sessionName ? values.sessionName : 'Session Name'}</h3></td></tr>
+        <tr><td width="100%"><h3 id="${
+          values?.sessionLibrary?.selected?.id
+        }-sessionDescription" style="text-align: left;margin: 8px 0 12px 0; padding: 0 16px; color: ${
+    values.sessionDescriptionColor
+  };">${values.description ? values.description : 'Session description'}</h3></td></tr>
+  ${values.isShowSpeakerAndBooth ? speakerAndBoothList(values, true) : ''}
+      </tbody>
+    </table>
+  `;
 };
 
 const showModal = function () {
