@@ -30,6 +30,16 @@ const speakerList = function (speakers) {
   });
 };
 
+const boothList = function (booths) {
+  return booths.map((booth) => {
+    return `
+      <div class="booth">
+        <img src="${booth}" alt="pic" />
+      </div>
+      `;
+  });
+};
+
 const defaultBooth = `
             <div class="booth"> 
             <img src="https://picsum.photos/100" alt="pic" />
@@ -50,7 +60,7 @@ const speakerAndBoothList = function (values, isPreview) {
       </div>
 
       <div class="session-booths" id="${values?.sessionLibrary?.selected?.id}-sessionBooth">
-      ${!values?.sessionLibrary?.selected?.id ? defaultBooth : values?.booths?.toString()}
+      ${!values?.sessionLibrary?.selected?.id ? defaultBooth : boothList(values?.booths)}
       </div>`;
     } else {
       return ` 
@@ -59,7 +69,7 @@ const speakerAndBoothList = function (values, isPreview) {
       </div>
 
       <div class="session-booths" id="${values?.sessionLibrary?.selected?.id}-sessionBooth">
-      ${!values?.sessionLibrary?.selected?.id ? defaultBooth : values?.booths?.toString()}
+      ${!values?.sessionLibrary?.selected?.id ? defaultBooth : boothList(values?.booths)}
       </div>`;
     }
   } else {
