@@ -32,7 +32,7 @@ const speakerList = function (speakers) {
       return false;
     }
   });
-
+return spl;
 };
 
 const boothList = function (booths) {
