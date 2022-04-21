@@ -53,7 +53,7 @@ const boothList = function (booths) {
   if (booths.length > 2) {
     bts += `<div class="booth-more" style="background-color:${theme.accentColor};color:${theme.secondaryFontColor};"> 
                ${booths.length - 2}
-            </div>``;
+            </div>`;
   }
   return bts;
 };
