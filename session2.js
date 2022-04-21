@@ -32,6 +32,7 @@ const speakerList = function (speakers) {
       return false;
     }
   });
+  console.log('spl', spl);
 return spl;
 };
 
