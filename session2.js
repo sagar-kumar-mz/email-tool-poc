@@ -22,11 +22,11 @@ const defaultSpeaker = `
 
 const speakerList = function (speakers) {
   return speakers.map((speaker) => {
-    return`
+    return `
       <div class="speaker">
-        <img src="https://picsum.photos/100" alt="pic" />
+        <img src="${speaker}" alt="pic" />
       </div>
-      `
+      `;
   });
 };
 
@@ -46,7 +46,7 @@ const speakerAndBoothList = function (values, isPreview) {
     if (isPreview) {
       return ` 
       <div class="session-speakers" id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">
-      ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : speakerList(['a', 'c', 'b'])} 
+      ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : speakerList(values?.speakers)} 
       </div>
 
       <div class="session-booths" id="${values?.sessionLibrary?.selected?.id}-sessionBooth">
@@ -55,7 +55,7 @@ const speakerAndBoothList = function (values, isPreview) {
     } else {
       return ` 
       <div class="session-speakers" id="${values?.sessionLibrary?.selected?.id}-sessionSpeaker">
-      ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : speakerList(['a', 'c', 'b'])} 
+      ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : speakerList(values?.speakers)} 
       </div>
 
       <div class="session-booths" id="${values?.sessionLibrary?.selected?.id}-sessionBooth">
