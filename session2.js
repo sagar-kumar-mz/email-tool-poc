@@ -42,13 +42,20 @@ const speakerList = function (speakers) {
 };
 
 const boothList = function (booths) {
-  return booths.map((booth) => {
-    return `
-      <div class="booth">
-        <img src="${booth}" alt="pic" />
-      </div>
-      `;
+  let bts = ``;
+  booths.map((booth, i) => {
+    if (i <= 1) {
+      bts += ` <div class="booth">
+                  <img src="${booth}" alt="pic" />
+                </div>`;
+    }
   });
+  if (booths.length > 2) {
+    bts += `<div class="booth-more" style="background-color:${theme.accentColor};color:${theme.secondaryFontColor};"> 
+               ${booths.length - 2}
+            </div>``;
+  }
+  return bts;
 };
 
 const defaultBooth = `
