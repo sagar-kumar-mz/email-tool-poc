@@ -22,11 +22,11 @@ const defaultSpeaker = `
 
 const speakerList = function (speakers) {
   return speakers.map((speaker) => {
-    return (
+    return`
       <div class="speaker">
         <img src="https://picsum.photos/100" alt="pic" />
       </div>
-    );
+      `
   });
 };
 
