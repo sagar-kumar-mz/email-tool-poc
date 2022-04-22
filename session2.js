@@ -33,7 +33,7 @@ const speakerList = function (speakers) {
     sps += `<div
               class="speaker-more"
               style="background-color:${theme.accentColor}; color:${theme.secondaryFontColor};">
-              ${speakers.length - 4}
+              +${speakers.length - 4}
             </div>`;
   }
   return sps;
@@ -52,7 +52,7 @@ const boothList = function (booths) {
     bts += `<div class="booth-more" style="background-color:${theme.accentColor};color:${
       theme.secondaryFontColor
     };"> 
-               ${booths.length - 2}
+               +${booths.length - 2}
             </div>`;
   }
   return bts;
