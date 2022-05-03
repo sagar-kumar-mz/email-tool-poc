@@ -2,7 +2,7 @@ const editorTemplate = `<button id="addSpeaker" class="button">Add Speaker</butt
 const searchButton = `<button id="search-btn" class="button">Search</button>`;
 const productItemsTemplate = _.template(`
   <% _.forEach(speakers, function(item) { %>
-    <div class="speakers-item card" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
+    <div class="speakers-item card" id="speakers-item" data-uuid='<%= item.id %>' data-title="<%= item.name %>" data-designation="<%= item.designation %>" data-image="<%= item.profile_img %>" data-company="<%= item.company %>" >
     <div class="speakers-media"> <img src="<%= item.profile_img %>" style="height:11rem; width: 11rem;object-fit:cover" /> </div>
       <h4 style="margin:5px 10px 0; text-align: left; color: ${theme.primary};overflow: hidden;  display: block;  text-overflow: ellipsis;  white-space: nowrap;"><%= item.name %> </h4>
       <h5 style="margin:5px 10px 0; text-align: left;color: ${theme.secondary};overflow: hidden;  display: block;  text-overflow: ellipsis;  white-space: nowrap;"><%= item.designation %>,<%= item.company %> </h5>
@@ -137,7 +137,7 @@ unlayer.registerPropertyEditor({
           const selectButton = document.querySelector('.speakers-list');
           if (!selectButton) return;
           selectButton.onclick = function (e) {
-            if (e.target.id === 'product-item') {
+            if (e.target.id === 'speakers-item') {
               // If user clicks on product item
               // Find selected item from speakers list
               const selectedProduct = data.speakers.find(
@@ -147,7 +147,7 @@ unlayer.registerPropertyEditor({
             } else {
               // If user click on child of product item (e.g. title, price, image or desctiption)
               const parent = e.target.parentElement;
-              if (parent && parent.id !== 'product-item') return;
+              if (parent && parent.id !== 'speakers-item') return;
               const selectedProduct = data.speakers.find(
                 (item) => item.id === parseInt(parent.dataset.uuid)
               );
