@@ -50,7 +50,7 @@ const toolTemplate = function (values, isViewer = false) {
     <h4 style="margin:5px 10px 0;font-size:13px; color: ${
       values.speakerDesignationCompanyColor
     }; overflow: hidden;  display: block;  text-overflow: ellipsis;  white-space: nowrap;">
-    ${values.speakerEmail? values.speakerEmail : ''}, ${values.speakerAbout? values.speakerAbout : ''}</h4>
+    ${values.speakerEmail? values.speakerEmail : ''} ${values.speakerEmail && values.speakerAbout ? ',' : ''} ${values.speakerAbout? values.speakerAbout : ''}</h4>
     </div>
     ${isViewer ? modalTemplate({ speakers: values.data.speakers }) : ''}`;
   } else {
@@ -104,7 +104,7 @@ const toolEmailTemplate = function (values, isViewer = false) {
     }-speakerDesAndCom" style="margin:5px 10px 0;font-size:13px; color: ${
       values.speakerDesignationCompanyColor
     }; overflow: hidden;  display: block;  text-overflow: ellipsis;  white-space: nowrap;">
-    ${values?.speakerEmail ? values?.speakerEmail : ''}, ${values?.speakerAbout ? values?.speakerAbout : ''}</h4>
+    ${values?.speakerEmail ? values?.speakerEmail : ''} ${values.speakerEmail && values.speakerAbout ? ',' : ''} ${values?.speakerAbout ? values?.speakerAbout : ''}</h4>
     </div>
     ${isViewer ? modalTemplate({ speakers: values.data.speakers }) : ''}`;
   } else {
