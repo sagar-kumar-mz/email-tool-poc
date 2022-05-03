@@ -153,7 +153,7 @@ const toolTemplate = function (values, isViewer = false) {
         <path d="M32 4V12" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M16 4V12" stroke="#C0C0C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <p style="font-size:13px;color:#808080;">Click here to select a community banner from the list.</p>
+      <p style="font-size:13px;color:#808080;">Click here to select a session from the list.</p>
       </div>
       ${isViewer ? modalTemplate({ sessions: values.data.sessions }) : ''}`;
     }
