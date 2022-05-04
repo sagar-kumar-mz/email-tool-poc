@@ -18,7 +18,7 @@ const modalTemplate = function (data) {
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">Speaker List</h3>
-          <button class="close" id="modalCloseBtn">&times;</button>
+          <button class="close" id="modalCloseBtnSpeaker">&times;</button>
         </div>
         <div class="modal-body">
           <div class="search-box">
@@ -162,7 +162,7 @@ unlayer.registerPropertyEditor({
           /* Register event listeners for search */
           const searchBar = document.querySelector('#search-bar');
           const searchButton = document.querySelector('#search-btn');
-          const closeBtn = document.querySelector('#modalCloseBtn');
+          const closeBtn = document.querySelector('#modalCloseBtnSpeaker');
           searchButton.onclick = function (e) {
             const list = document.querySelector('#speaker_library_modal .speakers-list');
             let filteredItem;
