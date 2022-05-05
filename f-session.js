@@ -23,13 +23,15 @@
     let sps = ``;
     speakers.map((speaker, i) => {
       if (i <= 3) {
-        sps += ` <div style="height: 30px;width: 30px;overflow: hidden;border-radius: 30px; display: flex;margin-right:6px;">
-                  <img src="${speaker}" alt="pic" />
+        sps += ` <div id="${speakers?.id}-sessionSpeaker" style="height: 30px;width: 30px;overflow: hidden;border-radius: 30px; display: flex;margin-right:6px;">
+                  <img src="${speaker?.img}" alt="img" />
                 </div>`;
       }
     });
     if (speakers.length > 4) {
-      sps += `<div style="background-color:${theme.accentColor}; color:${
+      sps += `<div id="remainingSessionSpeakerCount" style="background-color:${
+        theme.accentColor
+      }; color:${
         theme.secondaryFontColor
       };height: 30px;width: 30px;overflow: hidden;border-radius: 30px; display: flex; justify-content: center;align-items: center;font-size: 13px;">
               +${speakers.length - 4}
@@ -42,13 +44,15 @@
     let bts = ``;
     sponsors.map((booth, i) => {
       if (i <= 1) {
-        bts += ` <div style="height: 30px; width: 50px;overflow: hidden;border-radius: 4px;display: flex;margin-right: 6px;justify-content: center;padding: 2px;border: 1px solid #E0E0E0;background-color: #ffffff;box-sizing:border-box">
-                  <img src="${booth}" alt="pic" />
+        bts += ` <div id="${sponsors?.id}-sessionSponsor" style="height: 30px; width: 50px;overflow: hidden;border-radius: 4px;display: flex;margin-right: 6px;justify-content: center;padding: 2px;border: 1px solid #E0E0E0;background-color: #ffffff;box-sizing:border-box">
+                  <img src="${booth?.img}" alt="img" />
                 </div>`;
       }
     });
     if (sponsors.length > 2) {
-      bts += `<div style="background-color:${theme.accentColor};color:${
+      bts += `<div id="remainingSessionSponsorCount" style="background-color:${
+        theme.accentColor
+      };color:${
         theme.secondaryFontColor
       };height: 30px;width: 30px;overflow: hidden;border-radius: 4px; display: flex; justify-content: center;align-items: center;font-size: 13px;"> 
                +${sponsors.length - 2}
@@ -78,24 +82,24 @@
         return ` 
       <div style="display: flex;justify-content: start;align-items: center;" id="${
         values?.sessionLibrary?.selected?.id
-      }-sessionSpeaker">
+      }-sessionSpeakers">
       ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : speakerList(values?.speakers)} 
       </div>
       <div style="display: flex;justify-content: end;align-items: center;"  id="${
         values?.sessionLibrary?.selected?.id
-      }-sessionBooth">
+      }-sessionSponsors">
       ${!values?.sessionLibrary?.selected?.id ? defaultBooth : boothList(values?.sponsors)}
       </div>`;
       } else {
         return ` 
       <div style="display: flex;justify-content: end;align-items: center;" id="${
         values?.sessionLibrary?.selected?.id
-      }-sessionSpeaker">
+      }-sessionSpeakers">
       ${!values?.sessionLibrary?.selected?.id ? defaultSpeaker : speakerList(values?.speakers)} 
       </div>
       <div style="display: flex;justify-content: end;align-items: center;"  id="${
         values?.sessionLibrary?.selected?.id
-      }-sessionBooth">
+      }-sessionSponsors">
       ${!values?.sessionLibrary?.selected?.id ? defaultBooth : boothList(values?.sponsors)}
       </div>`;
       }
