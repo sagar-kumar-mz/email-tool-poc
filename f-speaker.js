@@ -204,12 +204,12 @@ unlayer.registerTool({
         },
         speakerTitleColor: {
           label: 'Speaker Name Color',
-          defaultValue: theme?.primary,
+          defaultValue: theme?.primaryFontColor,
           widget: 'color_picker',
         },
         speakerDesignationCompanyColor: {
           label: 'Speaker Designation & Company Color',
-          defaultValue: theme?.secondary,
+          defaultValue: theme?.accentColor,
           widget: 'color_picker',
         },
       },
