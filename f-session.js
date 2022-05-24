@@ -281,7 +281,7 @@
                 } else {
                   console.log('data.sessions', data.sessions)
                   filteredItem = data.sessions.filter((item) =>
-                    item.name.toLowerCase().includes(searchBar.value.toLowerCase())
+                    item?.name?.toLowerCase().includes(searchBar.value.toLowerCase()) || item?.trackName?.toLowerCase().includes(searchBar.value.toLowerCase())
                   );
                   sessionListHtml = sessionItemsTemplate({ sessions: filteredItem });
                 }
