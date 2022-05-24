@@ -279,6 +279,7 @@
                 if (searchBar.value === '') {
                   sessionListHtml = sessionItemsTemplate({ sessions: data.sessions });
                 } else {
+                  console.log('data.sessions', data.sessions)
                   filteredItem = data.sessions.filter((item) =>
                     item.name.toLowerCase().includes(searchBar.value.toLowerCase())
                   );
