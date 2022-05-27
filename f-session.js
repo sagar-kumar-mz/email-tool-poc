@@ -282,6 +282,7 @@
               const outerBody = document.querySelector('#u_body');
               outerBody.click();
             };
+
             /* Register event listeners for search */
             const searchBar = document.querySelector('#search-bar');
             searchBar.onchange = function (e) {
